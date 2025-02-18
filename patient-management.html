@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenMRS - Patient Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+        .btn {
+            width: 250px;
+            padding: 15px;
+            margin: 10px 0;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 18px;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .btn img {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="OpenMRS Logo" class="logo">
+        <a href="add_patient.html" class="btn">
+            <img src="add-icon.png" alt="Add"> Add Patient
+        </a>
+        <a href="search_patient.html" class="btn">
+            <img src="search-icon.png" alt="Search"> Search Patient
+        </a>
+    </div>
+</body>
+</html>

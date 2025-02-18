@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Attendance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, rgb(217, 244, 250), #cbf0f8, #e8f8fb);
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 800px;
+            text-align: center;
+            position: relative;
+        }
+        h2 {
+            color: rgb(2, 2, 62);
+            margin-bottom: 20px;
+        }
+        .attendance-list {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .staff-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .staff-item span {
+            font-size: 18px;
+        }
+        .staff-name {
+            font-weight: bold;
+            color: #333;
+        }
+        .status {
+            font-weight: bold;
+        }
+        .present {
+            color: green;
+        }
+        .absent {
+            color: red;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #573b8a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Jost', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #6d44b8;
+        }
+        .back-button {
+            margin-top: 10px;
+            background-color: #ccc;
+            color: black;
+        }
+        .back-button:hover {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Staff Attendance 🏥</h2>
+        <p>Track daily attendance of hospital staff.</p>
+        
+        <div class="attendance-list">
+            <div class="staff-item">
+                <span>👨‍⚕️ <span class="staff-name">Dr. Rajesh Kumar</span> - Cardiologist</span>
+                <span class="status present">Present ✅</span>
+            </div>
+            <div class="staff-item">
+                <span>👩‍⚕️ <span class="staff-name">Dr. Anjali Sharma</span> - Neurologist</span>
+                <span class="status absent">Absent ❌</span>
+            </div>
+            <div class="staff-item">
+                <span>👨‍⚕️ <span class="staff-name">Dr. Vikram Patel</span> - Orthopedic</span>
+                <span class="status present">Present ✅</span>
+            </div>
+            <div class="staff-item">
+                <span>👩‍⚕️ <span class="staff-name">Dr. Sneha Verma</span> - Pediatrician</span>
+                <span class="status present">Present ✅</span>
+            </div>
+            <div class="staff-item">
+                <span>👨‍⚕️ <span class="staff-name">Dr. Ramesh Gupta</span> - Surgeon</span>
+                <span class="status absent">Absent ❌</span>
+            </div>
+        </div>
+
+        <button>Mark Attendance</button>
+        <button class="back-button" onclick="history.back()">Back</button>
+    </div>
+</body>
+</html>

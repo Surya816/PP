@@ -1,0 +1,207 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Patient Type</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, rgb(217, 244, 250), #cbf0f8, #e8f8fb);
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: rgb(2, 2, 62);
+            margin-bottom: 50px;
+        }
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: scale(1.1);
+        }
+        .card img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            color: #573b8a;
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: #141313;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select Patient Type</h1>
+        <div class="cards">
+            <div class="card" onclick="window.location.href='/in-patient'">
+                <img src="{{ url_for('static', filename='inpatient.png') }}" alt="In-Patient">
+                <h2>In-Patient</h2>
+                <p>Patients admitted to the hospital.</p>
+            </div>
+            <div class="card" onclick="window.location.href='/out-patient'">
+                <img src="{{ url_for('static', filename='outpatient.png') }}" alt="Out-Patient">
+                <h2>Out-Patient</h2>
+                <p>Patients visiting for consultations.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> -->
+
+<!-- <div class="card" onclick="window.location.href='/in-patient'">
+    <img src="{{ url_for('static', filename='inpatient.png') }}" alt="In-Patient">
+    <h2>In-Patient</h2>
+    <p>Manage patients admitted to the hospital.</p>
+</div>
+<div class="card" onclick="window.location.href='/out-patient'">
+    <img src="{{ url_for('static', filename='outpatient.png') }}" alt="Out-Patient">
+    <h2>Out-Patient</h2>
+    <p>Manage patients visiting for consultations.</p>
+</div> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, rgb(217, 244, 250), #cbf0f8, #e8f8fb);
+        }
+        .container {
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: rgb(2, 2, 62);
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns */
+            gap: 25px; /* Space between cards */
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+        .card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            color: #573b8a;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        .card p {
+            color: #141313;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hospital Management System</h1>
+        <div class="cards">
+            <!-- Appointments Card -->
+            <div class="card" onclick="window.location.href='/appointments'">
+                <img src="{{ url_for('static', filename='appointments.png') }}" alt="Appointments">
+                <h2>Appointments</h2>
+                <p>Schedule and manage patient appointments.</p>
+            </div>
+            <!-- Doctors Card -->
+            <div class="card" onclick="window.location.href='/doctors'">
+                <img src="{{ url_for('static', filename='doctors.png') }}" alt="Doctors">
+                <h2>Doctors</h2>
+                <p>Manage doctor schedules and profiles.</p>
+            </div>
+            <!-- Surgeries/Operations Card -->
+            <div class="card" onclick="window.location.href='/surgeries'">
+                <img src="{{ url_for('static', filename='surgeries.png') }}" alt="Surgeries">
+                <h2>Surgeries</h2>
+                <p>Manage surgical procedures and operations.</p>
+            </div>
+            <!-- Special Visits Card -->
+            <div class="card" onclick="window.location.href='/special-visits'">
+                <img src="{{ url_for('static', filename='special_visits.png') }}" alt="Special Visits">
+                <h2>Special Visits</h2>
+                <p>Handle VIP or special patient visits.</p>
+            </div>
+            <!-- Search Card -->
+            <div class="card" onclick="window.location.href='/search'">
+                <img src="{{ url_for('static', filename='search.png') }}" alt="Search">
+                <h2>Search</h2>
+                <p>Search for patients, doctors, or records.</p>
+            </div>
+            <!-- Pharmacy Card -->
+            <div class="card" onclick="window.location.href='/pharmacy'">
+                <img src="{{ url_for('static', filename='pharmacy.png') }}" alt="Pharmacy">
+                <h2>Pharmacy</h2>
+                <p>Manage pharmacy and medication dispensing.</p>
+            </div>
+            <!-- Staff Attendance Card -->
+            <div class="card" onclick="window.location.href='/staff-attendance'">
+                <img src="{{ url_for('static', filename='staff_attendance.png') }}" alt="Staff Attendance">
+                <h2>Staff Attendance</h2>
+                <p>Track staff attendance and schedules.</p>
+            </div>
+            <!-- Inventory Card -->
+            <div class="card" onclick="window.location.href='/inventory'">
+                <img src="{{ url_for('static', filename='inventory.png') }}" alt="Inventory">
+                <h2>Inventory</h2>
+                <p>Manage hospital supplies and equipment.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

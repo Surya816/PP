@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surgeries List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, rgb(217, 244, 250), #cbf0f8, #e8f8fb);
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 1300px;
+            text-align: center;
+            position: relative;
+        }
+        h2 {
+            color: rgb(2, 2, 62);
+            margin-bottom: 20px;
+        }
+        .surgery-card {
+            display: flex;
+            align-items: center;
+            background: #f3f3f3;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .surgery-card:hover {
+            transform: scale(1.02);
+        }
+        .surgery-icon {
+            font-size: 40px;
+            margin-right: 15px;
+        }
+        .surgery-details {
+            text-align: left;
+        }
+        .surgery-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: rgb(2, 2, 62);
+        }
+        .surgery-time {
+            color: #555;
+            font-size: 14px;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        button {
+            width: 48%;
+            padding: 12px;
+            background-color: #573b8a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Jost', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #6d44b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Surgeries Scheduled Today</h2>
+
+        <div class="surgery-card">
+            <div class="surgery-icon">❤️</div>
+            <div class="surgery-details">
+                <div class="surgery-name">Open Heart Surgery</div>
+                <div class="surgery-time">Time: 10:00 AM - 2:00 PM</div>
+                <div class="surgery-time">Surgeon: Dr. Rajesh Kumar</div>
+            </div>
+        </div>
+
+        <div class="surgery-card">
+            <div class="surgery-icon">🦵</div>
+            <div class="surgery-details">
+                <div class="surgery-name">Knee Replacement</div>
+                <div class="surgery-time">Time: 11:30 AM - 3:30 PM</div>
+                <div class="surgery-time">Surgeon: Dr. Karan Verma</div>
+            </div>
+        </div>
+
+        <div class="surgery-card">
+            <div class="surgery-icon">👁️</div>
+            <div class="surgery-details">
+                <div class="surgery-name">Cataract Surgery</div>
+                <div class="surgery-time">Time: 12:00 PM - 1:30 PM</div>
+                <div class="surgery-time">Surgeon: Dr. Priya Mehta</div>
+            </div>
+        </div>
+
+        <div class="surgery-card">
+            <div class="surgery-icon">🦷</div>
+            <div class="surgery-details">
+                <div class="surgery-name">Wisdom Tooth Extraction</div>
+                <div class="surgery-time">Time: 2:00 PM - 3:00 PM</div>
+                <div class="surgery-time">Surgeon: Dr. Aditi Sharma</div>
+            </div>
+        </div>
+
+        <div class="surgery-card">
+            <div class="surgery-icon">🧠</div>
+            <div class="surgery-details">
+                <div class="surgery-name">Brain Tumor Removal</div>
+                <div class="surgery-time">Time: 3:00 PM - 7:00 PM</div>
+                <div class="surgery-time">Surgeon: Dr. Vikram Singh</div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button type="button" onclick="history.back()">Back</button>
+            <button type="button" onclick="alert('Feature Coming Soon!')">View Details</button>
+        </div>
+    </div>
+</body>
+</html>

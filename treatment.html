@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treatment Plan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, rgb(217, 244, 250), #cbf0f8, #e8f8fb);
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 1300px;
+            text-align: center;
+            position: relative;
+        }
+        h2, h3 {
+            color: rgb(2, 2, 62);
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #141313;
+            text-align: left;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 90%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+        }
+        button {
+            width: 48%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #573b8a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Jost', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #6d44b8;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Treatment Plan</h2>
+        <form action="/submit_treatment" method="POST">
+            <label for="diagnosis">Diagnosis:</label>
+            <input type="text" id="diagnosis" name="diagnosis" required>
+
+            <label for="medications">Medications Prescribed:</label>
+            <textarea id="medications" name="medications" rows="4" required></textarea>
+
+            <label for="procedures">Procedures Required:</label>
+            <textarea id="procedures" name="procedures" rows="4"></textarea>
+
+            <label for="doctor_notes">Doctor's Notes:</label>
+            <textarea id="doctor_notes" name="doctor_notes" rows="4"></textarea>
+
+            <div class="button-group">
+                <button type="button" onclick="history.back()">Back</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Treatment Plan Submitted Successfully!");
+            this.submit();
+        });
+    </script>
+</body>
+</html>

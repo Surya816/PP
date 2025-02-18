@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenMRS - Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background: #004d40;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            position: relative;
+        }
+        .navbar img {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            height: 40px;
+        }
+        .container {
+            display: flex;
+            padding: 20px;
+        }
+        .sidebar {
+            width: 200px;
+            background: #333;
+            color: white;
+            padding: 15px;
+            height: 100vh;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .sidebar ul li:hover {
+            background: #555;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <img src="logo.png" alt="Logo">
+        OpenMRS - Dashboard
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li>Home</li>
+                <li>Patients</li>
+                <li>Appointments</li>
+                <li>Medications</li>
+                <li>Logout</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h2>Welcome to OpenMRS Dashboard</h2>
+            <p>Select an option from the sidebar to proceed.</p>
+        </div>
+    </div>
+</body>
+</html>

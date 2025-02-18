@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In-Patient Options</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, rgb(217, 244, 250), #cbf0f8, #e8f8fb);
+        }
+        .container {
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: rgb(2, 2, 62);
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 30px; /* Space between cards */
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+        .card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            color: #573b8a;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        .card p {
+            color: #141313;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>In-Patient Options</h1>
+        <div class="cards">
+            <!-- In-Patient Consent Form -->
+            <div class="card" onclick="window.location.href='/inpatient-consent-form'">
+                <img src="{{ url_for('static', filename='consent.png') }}" alt="Consent Form">
+                <h2>Consent Form</h2>
+                <p>Fill out the consent form for in-patients.</p>
+            </div>
+            <!-- In-Patient Medical History Form -->
+            <div class="card" onclick="window.location.href='/inpatient-medical-history'">
+                <img src="{{ url_for('static', filename='medical_history.png') }}" alt="Medical History">
+                <h2>Medical History</h2>
+                <p>Record the medical history of in-patients.</p>
+            </div>
+            <!-- In-Patient Admission Form -->
+            <div class="card" onclick="window.location.href='/inpatient-admission'">
+                <img src="{{ url_for('static', filename='admission.png') }}" alt="Admission">
+                <h2>Admission</h2>
+                <p>Admit new in-patients.</p>
+            </div>
+            <!-- In-Patient Treatment Form -->
+            <div class="card" onclick="window.location.href='/inpatient-treatment'">
+                <img src="{{ url_for('static', filename='treatment.png') }}" alt="Treatment">
+                <h2>Treatment</h2>
+                <p>Check Treatments</p>
+            </div>
+            <!-- In-Patient Billing Form -->
+            <div class="card" onclick="window.location.href='/inpatient-billing'">
+                <img src="{{ url_for('static', filename='billing.png') }}" alt="Billing">
+                <h2>Billing Form</h2>
+                <p>Check Billing Form.</p>
+            </div>
+            <!-- In-Patient Discharge Form -->
+            <div class="card" onclick="window.location.href='/inpatient-discharge'">
+                <img src="{{ url_for('static', filename='discharge.png') }}" alt="Discharge">
+                <h2>Discharge Form</h2>
+                <p>Check Discharge Form.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

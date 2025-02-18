@@ -1,0 +1,316 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inpatient Medical History Form</title>
+    <style>
+        body {
+            background-color: lightgreen;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #FFFDD0; /* Cream color */
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Inpatient Medical History Form</h2>
+        <form action="/submit_medical_history" method="POST">
+            <label for="patient_id">Patient ID:</label>
+            <input type="text" id="patient_id" name="patient_id" required>
+            
+            <h3>Medical History</h3>
+            <label for="allergies">Allergies:</label>
+            <textarea id="allergies" name="allergies" rows="3"></textarea>
+            
+            <label for="past_conditions">Past Medical Conditions:</label>
+            <textarea id="past_conditions" name="past_conditions" rows="3"></textarea>
+            
+            <label for="current_medications">Current Medications:</label>
+            <textarea id="current_medications" name="current_medications" rows="3"></textarea>
+            
+            <label for="family_history">Family Medical History:</label>
+            <textarea id="family_history" name="family_history" rows="3"></textarea>
+            
+            <label for="surgical_history">Surgical History:</label>
+            <textarea id="surgical_history" name="surgical_history" rows="3"></textarea>
+            
+            <label for="smoking">Smoking History:</label>
+            <select id="smoking" name="smoking">
+                <option value="Never">Never</option>
+                <option value="Former Smoker">Former Smoker</option>
+                <option value="Current Smoker">Current Smoker</option>
+            </select>
+            
+            <label for="alcohol">Alcohol Consumption:</label>
+            <select id="alcohol" name="alcohol">
+                <option value="Never">Never</option>
+                <option value="Occasionally">Occasionally</option>
+                <option value="Frequently">Frequently</option>
+            </select>
+            
+            <button type="submit">Submit Medical History</button>
+        </form>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inpatient Medical History Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, rgb(217, 244, 250), #cbf0f8, #e8f8fb);
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 50%;
+            max-width: 700px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h2, h3 {
+            color: rgb(2, 2, 62);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #141313;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+        }
+        textarea {
+            resize: vertical;
+            height: 28px;
+        }
+        .file-upload-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .file-upload-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .file-upload-row input {
+            flex: 1;
+        }
+        .file-upload-row button {
+            padding: 5px 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .upload-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        .upload-btn:hover {
+            background-color: #0056b3;
+        }
+        .add-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .add-btn:hover {
+            background-color: #218838;
+        }
+        .remove-btn {
+            background-color: #d9534f;
+            color: white;
+        }
+        .remove-btn:hover {
+            background-color: #c9302c;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .back-button {
+            background-color: #d9534f;
+        }
+        .back-button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Inpatient Medical History Form</h2>
+        <form id="medicalForm">
+            <label for="patient_id">Patient ID:</label>
+            <input type="text" id="patient_id" name="patient_id" required>
+            
+            <h3>Medical History</h3>
+            <label for="allergies">Allergies:</label>
+            <textarea id="allergies" name="allergies"></textarea>
+            
+            <label for="past_conditions">Past Medical Conditions:</label>
+            <textarea id="past_conditions" name="past_conditions"></textarea>
+            
+            <label for="current_medications">Current Medications:</label>
+            <textarea id="current_medications" name="current_medications"></textarea>
+            
+            <label for="family_history">Family Medical History:</label>
+            <textarea id="family_history" name="family_history"></textarea>
+            
+            <label for="surgical_history">Surgical History:</label>
+            <textarea id="surgical_history" name="surgical_history"></textarea>
+            
+            <label for="smoking">Smoking History:</label>
+            <select id="smoking" name="smoking">
+                <option value="Never">Never</option>
+                <option value="Former Smoker">Former Smoker</option>
+                <option value="Current Smoker">Current Smoker</option>
+            </select>
+            
+            <label for="alcohol">Alcohol Consumption:</label>
+            <select id="alcohol" name="alcohol">
+                <option value="Never">Never</option>
+                <option value="Occasionally">Occasionally</option>
+                <option value="Frequently">Frequently</option>
+            </select>
+
+            <h3>Upload Medical Reports</h3>
+            <div id="fileUploadContainer" class="file-upload-container">
+                <div class="file-upload-row">
+                    <input type="text" placeholder="Enter file name" class="file-name">
+                    <input type="file" class="file-input">
+                    <button type="button" class="upload-btn">Upload</button>
+                    <button type="button" class="add-btn" onclick="addFileInput()">➕</button>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="back-button" onclick="goBack()">Back</button>
+                <button type="submit">Submit Medical History</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function goBack() {
+            window.location.href = "/in-patient";
+        }
+
+        function addFileInput() {
+            const container = document.getElementById("fileUploadContainer");
+            const div = document.createElement("div");
+            div.classList.add("file-upload-row");
+
+            div.innerHTML = `
+                <input type="text" placeholder="Enter file name" class="file-name">
+                <input type="file" class="file-input">
+                <button type="button" class="upload-btn">Upload</button>
+                <button type="button" class="remove-btn" onclick="removeFileInput(this)">❌</button>
+            `;
+
+            container.appendChild(div);
+        }
+
+        function removeFileInput(button) {
+            button.parentElement.remove();
+        }
+
+        document.getElementById("medicalForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData();
+            formData.append("patient_id", document.getElementById("patient_id").value);
+            formData.append("allergies", document.getElementById("allergies").value);
+            formData.append("past_conditions", document.getElementById("past_conditions").value);
+            formData.append("current_medications", document.getElementById("current_medications").value);
+            formData.append("family_history", document.getElementById("family_history").value);
+            formData.append("surgical_history", document.getElementById("surgical_history").value);
+            formData.append("smoking", document.getElementById("smoking").value);
+            formData.append("alcohol", document.getElementById("alcohol").value);
+
+            document.querySelectorAll(".file-upload-row").forEach(row => {
+                const fileInput = row.querySelector(".file-input");
+                if (fileInput.files.length > 0) {
+                    formData.append("medical_files", fileInput.files[0]);
+                }
+            });
+
+            fetch("/submit_medical_history", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                window.location.href = "/in-patient";
+            })
+            .catch(error => {
+                alert("Error submitting form. Please try again.");
+                console.error(error);
+            });
+        });
+    </script>
+</body>
+</html>

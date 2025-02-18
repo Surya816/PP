@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Patient Type</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, rgb(217, 244, 250), #cbf0f8, #e8f8fb);
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: rgb(2, 2, 62);
+            margin-bottom: 50px;
+        }
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: scale(1.1);
+        }
+        .card img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            color: #573b8a;
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: #141313;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select Patient Type</h1>
+        <div class="cards">
+            <div class="card" onclick="window.location.href='/in-patient'">
+                <img src="{{ url_for('static', filename='inpatient.png') }}" alt="In-Patient">
+                <h2>In-Patient</h2>
+                <p>Patients admitted to the hospital.</p>
+            </div>
+            <div class="card" onclick="window.location.href='/out-patient'">
+                <img src="{{ url_for('static', filename='outpatient.png') }}" alt="Out-Patient">
+                <h2>Out-Patient</h2>
+                <p>Patients visiting for consultations.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

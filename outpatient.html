@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outpatient Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, rgb(217, 244, 250), #cbf0f8, #e8f8fb);
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 600px;
+            text-align: center;
+            position: relative;
+        }
+        h1, h2 {
+            color: rgb(2, 2, 62);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #141313;
+            text-align: left;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+        }
+        input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        .radio-group label {
+            font-weight: normal;
+        }
+        button {
+            width: 20%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #573b8a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Jost', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #6d44b8;
+        }
+        .file-upload-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .file-upload-row input {
+            flex: 1;
+        }
+        .add-file {
+            background-color: #573b8a;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Outpatient Form</h1>
+        <form id="outpatientForm">
+            <!-- Patient Details -->
+            <label for="patient_id">Patient ID:</label>
+            <input type="text" id="patient_id" name="patient_id" value="Auto-generated" readonly>
+
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" placeholder="Enter full name" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label>Gender:</label>
+            <div class="radio-group">
+                <input type="radio" id="male" name="gender" value="Male" required><label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female" required><label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="Other"><label for="other">Other</label>
+            </div>
+
+            <label for="contact">Contact Information:</label>
+            <input type="tel" id="contact" name="contact" placeholder="Enter phone number" required>
+            <input type="email" id="email" name="email" placeholder="Enter email address">
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Enter street address" required>
+            <input type="text" id="city" name="city" placeholder="Enter city" required>
+            <input type="text" id="state" name="state" placeholder="Enter state" required>
+            <input type="text" id="pin_code" name="pin_code" placeholder="Enter PIN code" required>
+            <input type="text" id="country" name="country" value="India" readonly>
+
+            <!-- Appointment Details -->
+            <h2>Appointment Details</h2>
+            <label for="appointment_date">Appointment Date:</label>
+            <input type="date" id="appointment_date" name="appointment_date" required>
+
+            <label for="doctor">Select Doctor:</label>
+            <select id="doctor" name="doctor" required>
+                <option value="">Select a doctor</option>
+                <option value="dr_smith">Dr. Smith</option>
+                <option value="dr_john">Dr. John</option>
+                <option value="dr_jane">Dr. Jane</option>
+            </select>
+
+            <label for="reason">Reason for Visit:</label>
+            <textarea id="reason" name="reason" rows="4" placeholder="Describe the reason for the visit" required></textarea>
+
+            <!-- Medical History -->
+            <h2>Medical History</h2>
+            <label for="medical_history">Medical History:</label>
+            <textarea id="medical_history" name="medical_history" rows="4" placeholder="Enter medical history"></textarea>
+
+            <!-- File Upload Section -->
+            <h2>Upload Files</h2>
+            <div id="file-upload-container">
+                <div class="file-upload-row">
+                    <input type="text" name="file_labels[]" placeholder="Enter file description (e.g., X-ray, Report)">
+                    <input type="file" name="medical_files[]" class="file-input">
+                    <button type="button" class="add-file">+</button>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Form</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("file-upload-container").addEventListener("click", function (event) {
+                if (event.target.classList.contains("add-file")) {
+                    let container = document.getElementById("file-upload-container");
+                    
+                    let newFileRow = document.createElement("div");
+                    newFileRow.classList.add("file-upload-row");
+                    newFileRow.innerHTML = `
+                        <input type="text" name="file_labels[]" placeholder="Enter file description (e.g., X-ray, Report)">
+                        <input type="file" name="medical_files[]" class="file-input">
+                        <button type="button" class="add-file">+</button>
+                    `;
+                    
+                    container.appendChild(newFileRow);
+                }
+            });
+
+            document.getElementById("outpatientForm").addEventListener("submit", function (event) {
+                event.preventDefault();
+                alert("Outpatient form submitted successfully!");
+                this.reset(); // Reset the form after submission
+            });
+        });
+    </script>
+</body>
+</html>

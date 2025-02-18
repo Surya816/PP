@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Slip</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, rgb(217, 244, 250), #cbf0f8, #e8f8fb);
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 800px;
+            text-align: center;
+            position: relative;
+        }
+        h2 {
+            color: rgb(2, 2, 62);
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .pharmacy-list {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .medicine-item {
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .medicine-item span {
+            font-size: 18px;
+        }
+        .medicine-name {
+            font-weight: bold;
+            color: #333;
+        }
+        .doctor {
+            font-size: 14px;
+            color: #666;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #573b8a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Jost', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #6d44b8;
+        }
+        .back-button {
+            margin-top: 10px;
+            background-color: #ccc;
+            color: black;
+        }
+        .back-button:hover {
+            background-color: #bbb;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Pharmacy Slip 🏥</h2>
+        <p>Enter or select Patient ID to view prescribed medicines.</p>
+
+        <!-- Select Patient by ID -->
+        <label for="patientSelect">Select Patient ID:</label>
+        <select id="patientSelect" onchange="filterMedicines()">
+            <option value="">-- Select Patient ID --</option>
+            <option value="1001">1001</option>
+            <option value="1002">1002</option>
+            <option value="1003">1003</option>
+            <option value="1004">1004</option>
+        </select>
+
+        <!-- Search Patient by ID -->
+        <label for="patientSearch">Or Enter Patient ID:</label>
+        <input type="text" id="patientSearch" placeholder="Enter patient ID..." oninput="filterMedicines()">
+
+        <!-- Medicines Assigned -->
+        <div class="pharmacy-list" id="medicineList">
+            <div class="medicine-item" data-patient="1001">
+                <span>💊 <span class="medicine-name">Paracetamol</span> - 2 Tablets per day</span>
+                <div class="doctor">Prescribed by: Dr. Sharma</div>
+            </div>
+            <div class="medicine-item" data-patient="1001">
+                <span>💉 <span class="medicine-name">Insulin</span> - 10 units before meals</span>
+                <div class="doctor">Prescribed by: Dr. Rao</div>
+            </div>
+            <div class="medicine-item" data-patient="1002">
+                <span>🩹 <span class="medicine-name">Antiseptic Cream</span> - Apply twice a day</span>
+                <div class="doctor">Prescribed by: Dr. Patel</div>
+            </div>
+            <div class="medicine-item" data-patient="1002">
+                <span>🩺 <span class="medicine-name">Cough Syrup</span> - 10ml every 6 hours</span>
+                <div class="doctor">Prescribed by: Dr. Menon</div>
+            </div>
+            <div class="medicine-item" data-patient="1003">
+                <span>💊 <span class="medicine-name">Vitamin D</span> - 1 Tablet daily</span>
+                <div class="doctor">Prescribed by: Dr. Iyer</div>
+            </div>
+            <div class="medicine-item" data-patient="1004">
+                <span>💊 <span class="medicine-name">Aspirin</span> - 75mg daily</span>
+                <div class="doctor">Prescribed by: Dr. Verma</div>
+            </div>
+        </div>
+
+        <button onclick="dispenseMedication()">Dispense Medication</button>
+        <button class="back-button" onclick="history.back()">Back</button>
+    </div>
+
+    <script>
+        function filterMedicines() {
+            let searchValue = document.getElementById("patientSearch").value.trim();
+            let selectedPatient = document.getElementById("patientSelect").value;
+            let medicineItems = document.querySelectorAll(".medicine-item");
+
+            medicineItems.forEach(item => {
+                let patientId = item.getAttribute("data-patient");
+                if (patientId === searchValue || (selectedPatient && patientId === selectedPatient) || searchValue === "") {
+                    item.classList.remove("hidden");
+                } else {
+                    item.classList.add("hidden");
+                }
+            });
+        }
+
+        function dispenseMedication() {
+            let visibleMedicines = document.querySelectorAll(".medicine-item:not(.hidden)");
+            if (visibleMedicines.length === 0) {
+                alert("No medicines assigned to this patient.");
+                return;
+            }
+            alert("Medication dispensed successfully!");
+        }
+    </script>
+</body>
+</html>

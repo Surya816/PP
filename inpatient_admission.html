@@ -1,0 +1,331 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inpatient Admission Form</title>
+    <style>
+        body {
+            background-color: lightgreen;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #FFFDD0; /* Cream color */
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .photo-upload {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: white;
+        }
+        .photo-upload img {
+            width: 100px;
+            height: 120px;
+            object-fit: cover;
+            border: 1px solid #000;
+        }
+        .photo-upload input {
+            display: block;
+            margin-top: 5px;
+        }
+        h2, h3 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="photo-upload">
+            <img src="" alt="Passport Photo" id="photo-preview">
+            <input type="file" id="photo-upload" accept="image/*">
+        </div>
+        <h2>Inpatient Admission Form (India)</h2>
+        <form action="/submit_admission" method="POST">
+            <label for="patient_id">Unique Patient ID (Auto-generated):</label>
+            <input type="text" id="patient_id" name="patient_id" value="Auto-generated" readonly>
+            
+            <h3>Patient Details</h3>
+            <label for="first_name">Full Name:</label>
+            <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+            <input type="text" id="middle_name" name="middle_name" placeholder="Middle Name">
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+            
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+            
+            <label>Gender:</label>
+            <input type="radio" id="male" name="gender" value="Male" required><label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female" required><label for="female">Female</label>
+            <input type="radio" id="other" name="gender" value="Other"><label for="other">Other</label>
+            
+            <label for="contact">Contact Information:</label>
+            <input type="tel" id="contact" name="contact" placeholder="Phone Number" required>
+            <input type="email" id="email" name="email" placeholder="Email Address">
+            
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Street Address" required>
+            <input type="text" id="city" name="city" placeholder="City" required>
+            <input type="text" id="state" name="state" placeholder="State" required>
+            <input type="text" id="pin_code" name="pin_code" placeholder="PIN Code" required>
+            <input type="text" id="country" name="country" value="India" readonly>
+            
+            <h3>Admission Details</h3>
+            <label for="admission_date">Date of Admission:</label>
+            <input type="date" id="admission_date" name="admission_date" required>
+            
+            <label for="ward_type">Ward Type Preference:</label>
+            <input type="radio" id="general_ward" name="ward_type" value="General Ward" required><label for="general_ward">General Ward</label>
+            <input type="radio" id="semi_private" name="ward_type" value="Semi-Private"><label for="semi_private">Semi-Private</label>
+            <input type="radio" id="private" name="ward_type" value="Private"><label for="private">Private</label>
+            
+            <label for="admission_reason">Reason for Admission:</label>
+            <input type="text" id="admission_reason" name="admission_reason" required>
+            
+            <button type="submit">Submit Admission</button>
+        </form>
+    </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inpatient Admission Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, rgb(217, 244, 250), #cbf0f8, #e8f8fb);
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 1300px;
+            text-align: center;
+            position: relative;
+        }
+        h2, h3 {
+            color: rgb(2, 2, 62);
+            margin-bottom: 20px;
+        }
+        .photo-upload {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+        .photo-upload img {
+            width: 100px;
+            height: 120px;
+            object-fit: cover;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .photo-upload input {
+            display: block;
+            margin-top: 5px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #141313;
+            text-align: left;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 90%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+        }
+        input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        .radio-group label {
+            font-weight: normal;
+        }
+        /* Button Container */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .button-container button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Jost', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        /* Back Button */
+        .back-button {
+            background-color: #6d44b8;
+            color: white;
+        }
+        .back-button:hover {
+            background-color: #573b8a;
+        }
+        /* Submit Button */
+        .submit-button {
+            background-color: #573b8a;
+            color: white;
+        }
+        .submit-button:hover {
+            background-color: #6d44b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Photo Upload Section -->
+        <div class="photo-upload">
+            <img src="" alt="Passport Photo" id="photo-preview">
+            <input type="file" id="photo-upload" accept="image/*">
+        </div>
+
+        <h2>Inpatient Admission Form (India)</h2>
+        <form id="admissionForm">
+            <!-- Patient ID -->
+            <label for="patient_id">Unique Patient ID (Auto-generated):</label>
+            <input type="text" id="patient_id" name="patient_id" value="Auto-generated" readonly>
+
+            <!-- Patient Details -->
+            <h3>Patient Details</h3>
+            <label for="first_name">Full Name:</label>
+            <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+            <input type="text" id="middle_name" name="middle_name" placeholder="Middle Name">
+            <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label>Gender:</label>
+            <div class="radio-group">
+                <input type="radio" id="male" name="gender" value="Male" required><label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female" required><label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="Other"><label for="other">Other</label>
+            </div>
+
+            <label for="contact">Contact Information:</label>
+            <input type="tel" id="contact" name="contact" placeholder="Phone Number" required>
+            <input type="email" id="email" name="email" placeholder="Email Address">
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" placeholder="Street Address" required>
+            <input type="text" id="city" name="city" placeholder="City" required>
+            <input type="text" id="state" name="state" placeholder="State" required>
+            <input type="text" id="pin_code" name="pin_code" placeholder="PIN Code" required>
+            <input type="text" id="country" name="country" value="India" readonly>
+
+            <!-- Admission Details -->
+            <h3>Admission Details</h3>
+            <label for="admission_date">Date of Admission:</label>
+            <input type="date" id="admission_date" name="admission_date" required>
+
+            <label for="ward_type">Ward Type Preference:</label>
+            <div class="radio-group">
+                <input type="radio" id="general_ward" name="ward_type" value="General Ward" required><label for="general_ward">General Ward</label>
+                <input type="radio" id="semi_private" name="ward_type" value="Semi-Private"><label for="semi_private">Semi-Private</label>
+                <input type="radio" id="private" name="ward_type" value="Private"><label for="private">Private</label>
+            </div>
+
+            <label for="admission_reason">Reason for Admission:</label>
+            <input type="text" id="admission_reason" name="admission_reason" required>
+
+            <!-- Button Container -->
+            <div class="button-container">
+                <button type="button" class="back-button" onclick="history.back()">Back</button>
+                <button type="submit" class="submit-button">Submit Admission</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript to preview the uploaded photo
+        const photoUpload = document.getElementById('photo-upload');
+        const photoPreview = document.getElementById('photo-preview');
+
+        photoUpload.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    photoPreview.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle form submission with alert
+        document.getElementById("admissionForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            alert("Admission successfully submitted!");
+            this.reset(); // Reset the form after submission
+        });
+    </script>
+</body>
+</html>

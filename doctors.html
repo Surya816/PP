@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, rgb(217, 244, 250), #cbf0f8, #e8f8fb);
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            width: 1300px;
+            text-align: center;
+            position: relative;
+        }
+        h2 {
+            color: rgb(2, 2, 62);
+            margin-bottom: 20px;
+        }
+        .doctor-card {
+            display: flex;
+            align-items: center;
+            background: #f3f3f3;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .doctor-card:hover {
+            transform: scale(1.02);
+        }
+        .doctor-icon {
+            font-size: 40px;
+            margin-right: 15px;
+        }
+        .doctor-details {
+            text-align: left;
+        }
+        .doctor-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: rgb(2, 2, 62);
+        }
+        .specialization {
+            color: #555;
+            font-size: 14px;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        button {
+            width: 48%;
+            padding: 12px;
+            background-color: #573b8a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Jost', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #6d44b8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Available Doctors</h2>
+
+        <div class="doctor-card">
+            <div class="doctor-icon">🩺</div>
+            <div class="doctor-details">
+                <div class="doctor-name">Dr. Rajesh Kumar</div>
+                <div class="specialization">Cardiologist ❤️</div>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <div class="doctor-icon">🦷</div>
+            <div class="doctor-details">
+                <div class="doctor-name">Dr. Aditi Sharma</div>
+                <div class="specialization">Dentist 😁</div>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <div class="doctor-icon">🧠</div>
+            <div class="doctor-details">
+                <div class="doctor-name">Dr. Vikram Singh</div>
+                <div class="specialization">Neurologist 🏥</div>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <div class="doctor-icon">👀</div>
+            <div class="doctor-details">
+                <div class="doctor-name">Dr. Priya Mehta</div>
+                <div class="specialization">Ophthalmologist 👓</div>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <div class="doctor-icon">🦴</div>
+            <div class="doctor-details">
+                <div class="doctor-name">Dr. Karan Verma</div>
+                <div class="specialization">Orthopedic Surgeon 🏋️</div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button type="button" onclick="history.back()">Back</button>
+            <button type="button" onclick="alert('Feature Coming Soon!')">Book Appointment</button>
+        </div>
+    </div>
+</body>
+</html>

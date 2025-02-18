@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Patient - OpenMRS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        .logo {
+            width: 100px;
+            display: block;
+            margin: 0 auto 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .patient-details {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 5px;
+            text-align: left;
+        }
+    </style>
+    <script>
+        function searchPatient() {
+            let name = document.getElementById("name").value;
+            let id = document.getElementById("patientId").value;
+            let patientDetails = document.getElementById("patient-details");
+            
+            if (name || id) {
+                // Simulating patient search (static example)
+                patientDetails.innerHTML = `
+                    <h3>Patient Details</h3>
+                    <p><strong>Name:</strong> John Doe</p>
+                    <p><strong>ID:</strong> 12345</p>
+                    <p><strong>Date of Birth:</strong> 1990-05-15</p>
+                    <p><strong>Gender:</strong> Male</p>
+                    <p><strong>Phone:</strong> +1234567890</p>
+                    <p><strong>Address:</strong> 123 Street, City, Country</p>
+                `;
+                patientDetails.style.display = "block";
+            } else {
+                alert("Please enter a Patient Name or ID to search.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="OpenMRS Logo" class="logo">
+        <h2>Search Patient</h2>
+        <label for="name">Patient Name</label>
+        <input type="text" id="name" name="name">
+
+        <label for="patientId">Patient ID</label>
+        <input type="text" id="patientId" name="patientId">
+
+        <button class="btn" onclick="searchPatient()">Search</button>
+
+        <div id="patient-details" class="patient-details"></div>
+    </div>
+</body>
+</html>

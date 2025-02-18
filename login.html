@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+        <div class="logo">
+            <img  src="/static/WhatsApp Image 2023-12-08 at 11.14.41.jpeg" alt="FRP"/>
+            <h1 style="margin-left: 1600px; margin-top: -70px; font-size: xxx-large;">FRP</h1>
+        </div>
+        <div class="main">     
+            <input type="checkbox" id="chk" aria-hidden="true">
+    
+            <!-- Login Form -->
+            <div class="login">
+                <form id="login-form">
+                    <label for="chk" aria-hidden="true">Login</label>
+                    <input type="email" name="email" placeholder="Email" required="">
+                    <input type="password" name="pswd" placeholder="Password" required="">
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+    
+            <!-- Signup Form -->
+            <div class="signup">
+                <form id="signup-form">
+                    <label for="chk" aria-hidden="true">Sign up</label>
+                    <input type="text" name="txt" placeholder="User name" required="">
+                    <input type="email" name="email" placeholder="Email" required="">
+                    <input type="password" name="pswd" placeholder="Password" required="">
+                    <input type="password" name="auth" placeholder="auth token" required="">
+                    <button type="submit">Sign up</button>
+                </form>
+            </div>
+        </div>
+    
+    
+    
+    
+    <!-- Flash Message -->
+    <div id="flashMessage" class="flash-message">
+        Account created successfully!
+    </div>
+</body>
+<script>
+    $(document).ready(function() {
+        $('#login-form').submit(function (event) {
+
+    event.preventDefault();
+
+    var formData = $(this).serializeArray();
+    var jsonData = {};
+
+   
+    formData.forEach(function (field) {
+        jsonData[field.name] = field.value;
+    });
+
+
+    $.ajax({
+    type: "POST",
+    url: "/login",
+    data: JSON.stringify(jsonData),
+    contentType: 'application/json',
+    success: function (response) {
+    console.log('Login Response: ', response);
+    if (response.message === 'Login successful') {
+        console.log('Login successful!');
+        window.location.href = response.redirect; 
+    } else {
+        console.log('Login failed:', response.message);
+        alert('Login failed. Please check your credentials.');
+    }
+},
+
+    error: function (error) {
+        console.error('Login Error: ', error);
+
+        console.log('Error status:', error.status);
+        console.log('Error response:', error.responseText);
+
+        alert('Login failed. Please try again later.');
+    }
+});
+
+
+
+});
+
+
+
+
+$('#signup-form').submit(function(event) {
+    event.preventDefault();
+    var formData = $(this).serialize();
+
+    $.ajax({
+        type: "POST",
+        url: "/signup",
+        data: formData,
+        success: function(response) {
+          
+            if (response.message === 'Signup successful') {
+               
+                $('#flashMessage').text('Signup successful!').addClass('flash-success').addClass('flash-show');
+            } else {
+               
+                $('#flashMessage').text(response.message).addClass('flash-error').addClass('flash-show');
+            }
+
+           
+            setTimeout(function() {
+                $('#flashMessage').removeClass('flash-show').removeClass('flash-success').removeClass('flash-error').text('');
+            }, 4000);
+
+            $('#chk').prop('checked', false);
+        },
+        error: function(error) {
+  
+            if (error.responseJSON && error.responseJSON.message) {
+                
+                $('#flashMessage').text(error.responseJSON.message).addClass('flash-error').addClass('flash-show');
+            } else {
+                
+                $('#flashMessage').text('Signup failed. Please try again later.').addClass('flash-error').addClass('flash-show');
+            }
+
+            
+            setTimeout(function() {
+                $('#flashMessage').removeClass('flash-show').removeClass('flash-error').text('');
+            }, 4000);
+        }
+
+    });
+});
+
+
+
+
+    });
+</script>
+<style>
+    body{
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: 'Jost', sans-serif;
+	background: linear-gradient(to bottom, rgb(217, 244, 250), #cbf0f8, #e8f8fb);
+}
+.main{
+	width: 350px;
+	height: 500px;
+	background: red;
+	overflow: hidden;
+	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
+	border-radius: 10px;
+	box-shadow: 5px 20px 50px #000;
+}
+h1 {
+        color: rgb(2, 2, 62);
+        font-family: 'Times New Roman', Times, serif;
+        
+    }
+.logo {
+    height: 50px;
+    width: 200px;
+    margin-bottom: 45%;
+    margin-right: 85%;
+    position: absolute;
+
+
+}
+
+#chk{
+	display: none;
+}
+.login{
+	position: relative;
+	width:100%;
+	height: 100%;
+    color: #000;
+}
+label{
+	color: #141313;
+	font-size: 2.3em;
+	justify-content: center;
+	display: flex;
+	margin: 60px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+input{
+	width: 60%;
+	height: 20px;
+	background: #e0dede;
+	justify-content: center;
+	display: flex;
+	margin: 35px auto;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+    margin-top: -20px;
+}
+button{
+	width: 60%;
+	height: 40px;
+	margin: 10px auto;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: #573b8a;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 20px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+button:hover{
+	background: #6d44b8;
+}
+.signup{
+	height: 500px;
+	background: #eee;
+	border-radius: 60% / 10%;
+	transform: translateY(-180px);
+	transition: .8s ease-in-out;
+}
+.signup label{
+	color: #573b8a;
+	transform: scale(.6);
+}
+
+#chk:checked ~ .signup{
+	transform: translateY(-500px);
+}
+#chk:checked ~ .signup label{
+	transform: scale(1);	
+}
+#chk:checked ~ .login label{
+	transform: scale(.6);
+}
+
+/* Flash Message Styles */
+.flash-message {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+}
+
+.flash-show {
+    display: block;
+    animation: fadeOut 3s 1s forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+</style>
+</html>

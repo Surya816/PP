@@ -1,0 +1,4 @@
+login page
+admin
+doctor login , patient seach option
+receptionist has all access
